@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>KEC</title>
+    <base href="/" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://placement.kongu.edu/assets/favicons/192.png">
+    <link href="/style.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper">
+
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+        <%- include('header') %>
+            <!--**********************************
+            Sidebar start
+        ***********************************-->
+            <%- include('slidbar') %>
+                <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+                <!--**********************************
+            Content body start
+        ***********************************-->
+                <div class="content-body">
+
+                    <div class="row page-titles mx-0">
+                        <div class="col p-md-0">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                                <li class="breadcrumb-item active"><a href="javascript:void(0)">Add Staff</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- row -->
+
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="form-validation">
+                                            <h4 class="card-title">Search Staff</h4>
+                                            <form class="form-valide" action="/api/staffs/getstaffs" method="get">
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="val-StaffID">Staff
+                                                        ID <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" name="staffid" class="form-control"
+                                                            id="val-CourseName" placeholder="Enter Staff ID" required>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-lg-8 ml-auto">
+                                                        <button class="btn btn-primary">Search</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-12">
+                                <div class="card">
+
+                                    <div class="card-body">
+                                        <div class="form-validation">
+                                            <h4 class="card-title">Add Staff</h4>
+                                            <form class="form-valide" action="/api/staffs/addstaff" method="post">
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="val-StaffName">Staff
+                                                        Name
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="custom-select mr-sm-2" id="option1"
+                                                            name="option1">
+
+                                                            <option value="<%= staffs.Staff_Name%>">
+                                                                <%= staffs.Staff_Name%>
+
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label"
+                                                        for="val-Department">Department
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="custom-select mr-sm-2" id="option2"
+                                                            name="option2">
+
+                                                            <option value="<%= staffs.Department%>">
+                                                                <%= staffs.Department%>
+
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+
+
+
+
+
+                                                </div>
+
+
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="val-NoofStudents">No of
+                                                        Students
+                                                        Going to Handle<span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="noofstudents"
+                                                            name="noofstudents"
+                                                            placeholder="Enter a No of Students to Handle" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="val-NoOfSlots">Batch
+                                                        <span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <input type="text" class="form-control" id="batch" name="batch"
+                                                            placeholder="Example: 2021" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="">Select the
+                                                        Semester<span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6" style="margin-top: 10px;">
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="1st sem"
+                                                                required> 1st sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="2nd sem"> 2nd
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="3rd sem"> 3rd
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="4th sem"> 4th
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="5th sem"> 5th
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="6th sem"> 6th
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="7th sem"> 7th
+                                                            sem</label>
+                                                        <label class="radio-inline mr-3">
+                                                            <input type="radio" name="optradio" value="8th sem"> 8th
+                                                            sem</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="">Course Name that Going
+                                                        to Handle<span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control" id="coursename" name="coursename"
+                                                            required>
+                                                            <option value="">Please select</option>
+                                                            <option value="B.E. Computer Science and Engineering">Python
+                                                                Programming and Frameworks</option>
+                                                            <option
+                                                                value="B.E. Electronics and Communication Engineering">
+                                                                Operating Systems</option>
+                                                            <option value="B.Tech. Information Technology">Design and
+                                                                Analysis of Algorithms</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <label class="col-lg-3 col-form-label" for="">Department that going
+                                                        to Handle<span class="text-danger">*</span>
+                                                    </label>
+                                                    <div class="col-lg-6">
+                                                        <select class="form-control" id="" name="dept" required>
+                                                            <option value="">Please select</option>
+                                                            <option value="B.E. Civil Engineering">B.E. Civil
+                                                                Engineering</option>
+                                                            <option value="B.E. Mechanical Engineering">B.E. Mechanical
+                                                                Engineering</option>
+                                                            <option value="B.E. Mechatronics Engineering">B.E.
+                                                                Mechatronics Engineering</option>
+                                                            <option value="B.E. AutoMobile Engineering">B.E. AutoMobile
+                                                                Engineering</option>
+                                                            <option value="B.E. Chemical Engineering">B.E. Chemical
+                                                                Engineering</option>
+                                                            <option value="B.Tech Food Technology">B.Tech Food
+                                                                Technology</option>
+                                                            <option value="B.E. Electrical and Electronics Engineering">
+                                                                B.E. Electrical and Electronics Engineering</option>
+                                                            <option
+                                                                value="B.E. Electronics and Communication Engineering">
+                                                                B.E. Electronics and Communication Engineering</option>
+                                                            <option value="B.E. Computer Science and Engineering">B.E.
+                                                                Computer Science and Engineering</option>
+                                                            <option value="B.Tech. Information Technology">B.Tech.
+                                                                Information Technology</option>
+                                                            <option value="B.E. Computer Science and Design">B.E.
+                                                                Computer Science and Design</option>
+                                                            <option
+                                                                value="B.Tech Artificial Intelligence and Data Science">
+                                                                B.Tech Artificial Intelligence and Data Science</option>
+                                                            <option
+                                                                value="B.Tech Artificial Intelligence and Machine Learning">
+                                                                B.Tech Artificial Intelligence and Machine Learning
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-lg-8 ml-auto">
+                                                        <button type="submit" class="btn btn-primary">Add Staff</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- #/ container -->
+                </div>
+                <!--**********************************
+            Content body end
+        ***********************************-->
+
+                <!--**********************************
+            Footer start
+        ***********************************-->
+                <%- include('footer') %>
+
+                    <!--**********************************
+            Footer end
+        ***********************************-->
+    </div>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src="plugins/common/common.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/gleek.js"></script>
+    <script src="js/styleSwitcher.js"></script>
+
+    <script src="./plugins/validation/jquery.validate.min.js"></script>
+    <script src="./plugins/validation/jquery.validate-init.js"></script>
+
+</body>
+
+</html>
